@@ -47,6 +47,14 @@ BOARD_SEPOLICY_DIRS += \
 PRODUCT_COPY_FILES += \
     device/hlhtddx/BaiQi/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
 
+PRODUCT_COPY_FILES += \
+    device/htc/flounder/gps/bcm/gps.bcm47521.conf:system/etc/gps.bcm47521.conf \
+    device/htc/flounder/gps/bcm/gpsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/gpsconfig.xml
+
+DEVICE_PACKAGE_OVERLAYS := \
+    $(LOCAL_PATH)/wifi_only_overlay \
+    $(LOCAL_PATH)/overlay
+
 # Set SELinux to Permissive mode for vehicle hal network accessing
 # TODO this will be removed while sepolicy is ready
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
